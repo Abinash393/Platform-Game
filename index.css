@@ -1,0 +1,12 @@
+:root {
+  --background: rgba(52, 166, 251, 1);
+  --gold-coins: rgba(241, 229, 89, 1);
+  --player: rgba(64, 64, 64, 1);
+  --lava: rgba(255, 99, 99, 1);
+}
+
+body {
+  font-size: 16px;
+  font-family: sans-serif;
+  background-color: var(--background);
+}
