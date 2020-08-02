@@ -5,6 +5,7 @@
 - A game can have multiple level
 - A level complete when all coins collected 
 - If the player touches lava, reset the current level
+- A whole game consists of multiple levels
 
 ### Map
 - "#" as wall
