@@ -1,5 +1,9 @@
 const allMap = []
-const mapItems = {}
+const mapItems = {
+    ".": "empty",
+    "#": "wall",
+    "+": "lava"
+};
 
 const map1 = `
 ......................
@@ -11,34 +15,56 @@ const map1 = `
 ......#++++++++++++#..
 ......##############..
 ......................`
+allMap.push(map1)
 
-allMap.push(map1.trim())
+const map2 = `
+..................................
+.################################.
+.#..............................#.
+.#..............................#.
+.#..............................#.
+.#...........................o..#.
+.#..@...........................#.
+.##########..............########.
+..........#..o..o..o..o..#........
+..........#...........M..#........
+..........################........
+..................................`
+allMap.push(map2)
 
 // create level
 class Map {
     // takes index of allMap
     constructor(level) {
-        // checking input
-        if (typeof level != "number") {
-            return false
-        }
-        if (allMap[level] == undefined) {
-            return false
-        }
+        // validating input
+        if (!allMap[level]) return false
 
         // breaking into rows and breaking row into each character
         const rows = []
-        allMap[level].split("\n").forEach( (e) => {
+        allMap[level].trim().split("\n").forEach((e) => {
             rows.push([...e])
         });
 
         this.height = rows.length
         this.weight = rows[0].length
 
-        // 
-        this.rows = rows.map( (r, i) => {
-            arr = []
+        this.rows = rows.map((row, i) => {
+            return row.map((char, j) => {
+                const type = mapItems[char];
+                // static
+                if (typeof type == "string") return type;
+                // create moving parts aka actors (player, lava, coin) 
+                this.startActors.push(
+                type.create(new Vec(j, i), char))
+                return "empty"
+            });
+        });
+    }
+}
 
-        })
+//
+class Vec {
+    constructor() {
+
     }
 }

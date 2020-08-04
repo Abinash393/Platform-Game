@@ -1,6 +1,6 @@
 :root {
   --background: rgba(52, 166, 251, 1);
-  --gold-coins: rgba(241, 229, 89, 1);
+  --coins: rgba(241, 229, 89, 1);
   --player: rgba(64, 64, 64, 1);
   --lava: rgba(255, 99, 99, 1);
 }
@@ -8,5 +8,48 @@
 body {
   font-size: 16px;
   font-family: sans-serif;
-  background-color: var(--background);
+  background-color: gainsboro;
+}
+
+.background {
+  background: var(--background);
+  table-layout: fixed;
+  border-spacing: 0;
+}
+
+.background td {
+  padding: 0;
+}
+
+.lava {
+  background: var(--lava);
+}
+
+.wall {
+  background: white;
+}
+
+.actor {
+  position: absolute;
+}
+.coin {
+  background: var(--coins);
+}
+
+.player {
+  background: rgb(64, 64, 64);
+}
+
+.lost .player {
+  background: rgb(160, 64, 64);
+}
+.won .player {
+  box-shadow: -4px -7px 8px white, 4px -7px 8px white;
+}
+
+.game {
+  overflow: hidden;
+  max-width: 600px;
+  max-height: 450px;
+  position: relative;
 }
