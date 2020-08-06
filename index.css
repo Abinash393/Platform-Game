@@ -32,17 +32,19 @@ body {
 .actor {
   position: absolute;
 }
+
 .coin {
   background: var(--coins);
 }
 
 .player {
-  background: rgb(64, 64, 64);
+  background: var(--player);
 }
 
 .lost .player {
   background: rgb(160, 64, 64);
 }
+
 .won .player {
   box-shadow: -4px -7px 8px white, 4px -7px 8px white;
 }
