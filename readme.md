@@ -13,4 +13,4 @@
 - "O" as coin
 - "=" at the top is a block of lava that moves back and forth horizontally
 - "|" as vertical moving lava blobs
-- "V" as vertically dripping lava, jumping back to its start position when it hits the floor.
+- "v" as vertically dripping lava, jumping back to its start position when it hits the floor.
