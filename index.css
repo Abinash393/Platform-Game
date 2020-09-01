@@ -10,3 +10,48 @@ body {
 	font-family: sans-serif;
 	background-color: var(--background);
 }
+
+.background {
+	background: var(--background);
+	table-layout: fixed;
+	border-spacing: 0;
+}
+
+.background td {
+	padding: 0;
+}
+
+.lava {
+	background: var(--lava);
+}
+
+.wall {
+	background: white;
+}
+
+.actor {
+	position: absolute;
+}
+
+.coin {
+	background: var(--coins);
+}
+
+.player {
+	background: var(--player);
+}
+
+.lost .player {
+	background: rgb(160, 64, 64);
+}
+
+.won .player {
+	box-shadow: -4px -7px 8px white, 4px -7px 8px white;
+}
+
+.game {
+	overflow: hidden;
+	max-width: 600px;
+	max-height: 450px;
+	position: relative;
+}
