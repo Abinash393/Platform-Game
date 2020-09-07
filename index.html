@@ -10,4 +10,9 @@
 		<div id="container"></div>
 	</body>
 	<script src="index.js"></script>
+	<script>
+		let simpleLevel = new Level(simpleLevelPlan)
+		let display = new DOMDisplay(document.body, simpleLevel)
+		display.syncState(State.start(simpleLevel))
+	</script>
 </html>

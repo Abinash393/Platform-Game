@@ -194,6 +194,7 @@ class DOMDisplay {
 	}
 }
 
+// draw map by blocks
 function drawGrid(level) {
 	return elt(
 		"table",
@@ -211,6 +212,7 @@ function drawGrid(level) {
 	)
 }
 
+// render moving elements
 function drawActors(actors) {
 	return elt(
 		"div",
@@ -255,4 +257,42 @@ DOMDisplay.prototype.scrollPlayerIntoView = function (state) {
 	} else if (center.y > bottom - margin) {
 		this.dom.scrollTop = center.y + margin - height
 	}
+}
+
+level.prototype.touches = function (pos, size, type) {
+	var xStart = Math.floor(pos.x)
+	var xEnd = Math.ceil(pos.x + size.x)
+	var yStart = Math.floor(pos.y)
+	var yEnd = Math.ceil(pos.y + size.y)
+
+	for (var y = yStart; y < yEnd; y++) {
+		for (var x = xStart; x < xEnd; x++) {
+			let isOutside =
+				x < 0 || x >= this.width || y < 0 || y >= this.height
+			let here = isOutside ? "wall" : this.rows[y][x]
+			if (here == type) return true
+		}
+	}
+	return false
+}
+
+State.prototype.update = function (time, keys) {
+	let actors = this.actors.map((actor) => {
+		actor.update(time, this, keys)
+	})
+	let newState = new State(this.level, actors, this.status)
+	if (newState.status != newState.player) return newState
+
+	let player = newState.player
+	if (this.level.touches(player.pos, player.size, "Lava")) {
+		return new State(this.level, actors, "lost")
+	}
+
+	for (let actors of actor) {
+		if (actor != player && overlap(actor, player)) {
+			newState = actor.collide(newState)
+		}
+	}
+
+	return newState
 }
