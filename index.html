@@ -11,8 +11,9 @@
 	</body>
 	<script src="index.js"></script>
 	<script>
-		let simpleLevel = new Level(simpleLevelPlan)
+		let simpleLevel = new Level(map1)
 		let display = new DOMDisplay(document.body, simpleLevel)
 		display.syncState(State.start(simpleLevel))
+		runGame(GAME_LEVELS, DOMDisplay)
 	</script>
 </html>
